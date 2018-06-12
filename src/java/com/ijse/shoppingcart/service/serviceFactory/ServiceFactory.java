@@ -5,7 +5,7 @@
  */
 package com.ijse.shoppingcart.service.serviceFactory;
 
-import com.ijse.libsystem.service.SuperService;
+import com.ijse.shoppingcart.service.SuperService;
 
 /**
  *

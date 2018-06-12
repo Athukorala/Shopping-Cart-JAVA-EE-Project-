@@ -18,7 +18,7 @@ public class DaoFactory {
         
     }
     public enum DAOType{
-        
+        ADMIN,ADMIN_LOGIN,CUSTOMER,ITEM,ITEM_CATEGORY
     }
      
     public static DaoFactory getInstance(){
