@@ -38,9 +38,9 @@ create table admin_login(
 
 INSERT INTO admin_login VALUES(1,'admin',aes_encrypt('admin','admin'));
 
-INSERT INTO customer VALUES(1,'tharindu','kaluthara','0778533935','tharindu',aes_encrypt('ijse','tharindu'));
-INSERT INTO customer VALUES(2,'sandun','aluthgama','0774954012','sandun',aes_encrypt('ijse','sandun'));
-INSERT INTO customer VALUES(3,'vidura','kaluthara-north','0766234152','vidura',aes_encrypt('ijse','vidura'));
+INSERT INTO customer VALUES(1,'tharindu','kaluthara','0778533935','tharindu@1',aes_encrypt('ijse','tharindu@1'));
+INSERT INTO customer VALUES(2,'sandun','aluthgama','0774954012','sandun@1',aes_encrypt('ijse','sandun@1'));
+INSERT INTO customer VALUES(3,'vidura','kaluthara-north','0766234152','vidura@1',aes_encrypt('ijse','vidura@1'));
 
 INSERT INTO item_category VALUES(1,'LAPTOP');
 INSERT INTO item_category VALUES(2,'FRUIT');
@@ -60,3 +60,17 @@ mysql> select c.cname,aes_decrypt(c.cpassword,c.cname)  from customer c where c.
 +----------+----------------------------------+
 | tharindu | ijse                             |
 +----------+----------------------------------+
+ select c.cname,aes_decrypt(c.cpassword,c.cusername) from customer c where c.cusername='tharindu@1';
+
+ select aes_decrypt(apassword,aemail) from Admin_Login where aemail="admin";
+
+select iname,icname from item i, item_category ic where i.icid=ic.icid;
+
+mysql> select iname,icname from item i, item_category ic where i.icid=ic.icid && i.icid=1;
++----------+--------+
+| iname    | icname |
++----------+--------+
+| DELL     | LAPTOP |
+| HP       | LAPTOP |
+| THINKPAD | LAPTOP |
++----------+--------+

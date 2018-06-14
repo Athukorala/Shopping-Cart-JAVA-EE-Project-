@@ -22,7 +22,9 @@ public class ItemCategoryServiceImpl implements ItemCategoryService {
 
     @Override
     public List<ItemCategoryDto> readAll() throws ClassNotFoundException, Exception {
+        
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
     }
 
     @Override

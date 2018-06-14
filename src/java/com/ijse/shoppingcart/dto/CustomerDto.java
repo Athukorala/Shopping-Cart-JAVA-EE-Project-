@@ -30,6 +30,15 @@ public class CustomerDto {
         this.cpassword = cpassword;
     }
 
+    public CustomerDto(String cid, String cname, String caddress, String cmobile, String cusername) {
+        this.cid = cid;
+        this.cname = cname;
+        this.caddress = caddress;
+        this.cmobile = cmobile;
+        this.cusername = cusername;
+        
+    }
+    
     public String getCid() {
         return cid;
     }

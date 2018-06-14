@@ -15,15 +15,46 @@ public class ItemModel {
     private String icid;
     private String iname;
     private int iqty;
+    private double iprice;
+    private String icname;
 
     public ItemModel() {
     }
 
-    public ItemModel(String iid, String icid, String iname, int iqty) {
+    public ItemModel(String iid, String icid, String iname, int iqty,double iprice) {
         this.iid = iid;
         this.icid = icid;
         this.iname = iname;
         this.iqty = iqty;
+        this.iprice=iprice;
+    }
+
+    
+
+    public ItemModel(String iid, String icid, String iname, int iqty, double iprice, String icname) {
+        this.iid = iid;
+        this.icid = icid;
+        this.iname = iname;
+        this.iqty = iqty;
+        this.iprice = iprice;
+        this.icname = icname;
+    
+    }
+
+    public String getIcname() {
+        return icname;
+    }
+
+    public void setIcname(String icname) {
+        this.icname = icname;
+    }
+    
+    public double getIprice() {
+        return iprice;
+    }
+
+    public void setIprice(double iprice) {
+        this.iprice = iprice;
     }
 
     public String getIid() {

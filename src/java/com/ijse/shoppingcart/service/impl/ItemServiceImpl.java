@@ -5,8 +5,12 @@
  */
 package com.ijse.shoppingcart.service.impl;
 
+import com.ijse.shoppingcart.dao.ItemDao;
+import com.ijse.shoppingcart.dao.daoFactory.DaoFactory;
 import com.ijse.shoppingcart.dto.ItemDto;
+import com.ijse.shoppingcart.model.ItemModel;
 import com.ijse.shoppingcart.service.ItemService;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -23,7 +27,18 @@ public class ItemServiceImpl  implements ItemService{
 
     @Override
     public List<ItemDto> readAll() throws ClassNotFoundException, Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ItemDao dao = (ItemDao) DaoFactory.getInstance().getDAOFactory(DaoFactory.DAOType.ITEM);
+        List<ItemDto> itemArray=new ArrayList<>();
+        ItemDto dto=new ItemDto();
+        
+        List<ItemModel> model= dao.readAll();
+        for (ItemModel mod : model) {
+            dto=new ItemDto(mod.getIcname(),mod.getIqty(), mod.getIname(),  mod.getIprice());
+            itemArray.add(dto);
+        }
+
+        return itemArray;
+    
     }
 
     @Override

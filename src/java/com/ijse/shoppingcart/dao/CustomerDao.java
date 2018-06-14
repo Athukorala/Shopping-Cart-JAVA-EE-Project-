@@ -21,4 +21,6 @@ public interface CustomerDao extends SuperDao {
     public int delete(CustomerModel model) throws ClassNotFoundException, Exception;
 
     public int update(CustomerModel model) throws ClassNotFoundException, Exception;
+    
+    public String checkLoginPassword(String email) throws ClassNotFoundException, Exception;
 }

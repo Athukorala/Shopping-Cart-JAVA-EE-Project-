@@ -20,4 +20,6 @@ public interface CustomerService extends SuperService {
     public boolean delete(CustomerDto dto) throws ClassNotFoundException, Exception;
 
     public boolean update(CustomerDto dto) throws ClassNotFoundException, Exception;
+    
+    public String checkLoginPassword(String email) throws ClassNotFoundException, Exception;
 }

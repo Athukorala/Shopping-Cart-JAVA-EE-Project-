@@ -5,14 +5,14 @@
  */
 package com.ijse.shoppingcart.controller;
 
-import com.ijse.shoppingcart.dto.AdminLoginDto;
-import com.ijse.shoppingcart.service.AdminLoginService;
+
+import com.ijse.shoppingcart.service.ItemService;
 import com.ijse.shoppingcart.service.serviceFactory.ServiceFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,8 +23,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author TD Athukorala
  */
-@WebServlet(name = "AdminLoginController", urlPatterns = {"/AdminLoginController"})
-public class AdminLoginController extends HttpServlet {
+@WebServlet(name = "AdminItemViewController", urlPatterns = {"/AdminItemViewController"})
+public class AdminItemViewController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,34 +39,12 @@ public class AdminLoginController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String email = request.getParameter("adminEmail");
-            String password = request.getParameter("adminPassword");
-
-            System.out.println("password: " + password);
-            System.out.println("email: " + email);
-
-            AdminLoginService service = (AdminLoginService) ServiceFactory.getInstance().getServiceFactory(ServiceFactory.ServiceType.ADMIN_LOGIN);
-            if (email.trim().equalsIgnoreCase("") || password.trim().equalsIgnoreCase("")) {
-                request.getRequestDispatcher("index.jsp").forward(request, response);
-            } else {
-                String pass = service.checkLoginPassword(email);
-                System.out.println("Result: " + pass);
-                if (null == pass) {
-                    request.getRequestDispatcher("index.jsp").forward(request, response);
-                    out.print("<script>alert('Incorrect username')</script>");
-                } else if (password.equalsIgnoreCase(pass)) {
-                    request.getRequestDispatcher("crudOperations.jsp").forward(request, response);
-                    
-//                
-                } else if (!password.equalsIgnoreCase(pass)) {
-                    request.getRequestDispatcher("index.jsp").forward(request, response);
-                    out.print("<script>alert('Incorrect password')</script>");
-                    
-                }
-            }
-
+            ItemService ser=(ItemService) ServiceFactory.getInstance().getServiceFactory(ServiceFactory.ServiceType.ITEM);
+            List itemArray=ser.readAll();
+             request.setAttribute("ItemViewList", itemArray);
+            request.getRequestDispatcher("crudOperations.jsp").forward(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(AdminLoginController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminItemViewController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -83,9 +61,6 @@ public class AdminLoginController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        String email = request.getParameter("adminEmail");
-        String password = request.getParameter("adminPassword");
-
     }
 
     /**
@@ -100,10 +75,6 @@ public class AdminLoginController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        try (PrintWriter out = response.getWriter()) {
-
-        }
-
     }
 
     /**

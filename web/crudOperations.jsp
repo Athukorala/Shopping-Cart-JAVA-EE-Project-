@@ -4,6 +4,9 @@
     Author     : TD Athukorala
 --%>
 
+<%@page import="com.ijse.shoppingcart.dto.ItemDto"%>
+<%@page import="java.util.List"%>
+<%@page import="com.ijse.shoppingcart.dto.CustomerDto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,31 +20,31 @@
     <script>
         fun
     </script>
-        
+
 
     <body style="background-color: #d2cbcb;background-image: url(home_back.png);height: 100px">
     <center>
         <br/>
-        
+
         <div class="animated rubberBand">
             <h3 style='color:#666666'><span style='color:orange'>S</span>hopping <span style='color:orange'>C</span>art</h3>
             <small>Smarter Shopping, Better Living!</small>
         </div>
         <button type="button" class="btn btn-default btn-sm" style="float:right" onclick='logoutBtn()'>
-          Log out
+            Log out
         </button>
         <hr>
     </center>
     <div class="container">     
-        
+
 
         <div class="row">
 
             <div class="col-sm-5">
-                
-                
+
+
                 <p>Customer CRUD Operations</p>
-                
+
                 <div class="animated wobble">
                     <div class="card" style='border-radius: 15px' >
 
@@ -50,28 +53,33 @@
                         </div>
 
                         <div class="card-body">
-                            <form>
+                            <form action="AdminCustomerViewController" method="post">
 
 
                                 <div class="form-group row">
-                                    <label class="col-sm-7 col-form-label"> Name</label>
+                                    <label class="col-sm-7 col-form-label"> User Name</label>
                                     <div class="col-sm-10">
                                         <div class="row">
                                             <div class="col-sm-10">
-                                                 <input type="text" class="form-control"  placeholder="Customer Name" name="cname" style='border-radius:18px'>
-                                        
+                                                <input type="text" class="form-control"  placeholder="Customer User Name" name="cusername" style='border-radius:18px'>
+
                                             </div>
-                                            
+
                                             <div class="col-sm-2">
                                                 <button type="button" class="btn btn-warning" style='border-radius:18px'>Search</button>
 
                                             </div>
                                         </div>
 
-                                       
+
                                     </div>
                                 </div>
-
+                                <div class="form-group row">
+                                    <label class="col-sm-7 col-form-label"> Name</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control"  placeholder="Customer Name" name="cname" style='border-radius:18px'>
+                                    </div>
+                                </div>
 
                                 <div class="form-group row">
                                     <label class="col-sm-7 col-form-label"> Address</label>
@@ -89,12 +97,7 @@
 
                                 <hr/>
 
-                                <div class="form-group row">
-                                    <label class="col-sm-7 col-form-label"> Username</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control"  placeholder="Customer Username" name="cusername" style='border-radius:18px'>
-                                    </div>
-                                </div>
+
 
                                 <div class="form-group row">
                                     <label class="col-sm-7 col-form-label"> Password</label>
@@ -111,9 +114,9 @@
                                 </div>
 
                                 <center>
-                                    <button type="button" class="btn btn-success" style='border-radius:18px'>Add</button>
-                                    <button type="button" class="btn btn-info" style='border-radius:18px'>Update</button>
-                                    <button type="button" class="btn btn-danger" style='border-radius:18px'>Remove</button>
+                                    <button type="submit" class="btn btn-success" style='border-radius:18px'>Add</button>
+                                    <button type="submit" class="btn btn-info" style='border-radius:18px'>Update</button>
+                                    <button type="submit" class="btn btn-danger" style='border-radius:18px'>Remove</button>
                                 </center>
                             </form>
                         </div>
@@ -126,8 +129,8 @@
 
             </div>
             <div class="col-sm-5">
-                
-               
+
+
                 <p> Item CRUD Operations</p>
 
                 <div class="row">
@@ -170,7 +173,7 @@
                                 <center> Item Management </center>
                             </div>                       
                             <div class="card-body">
-                                <form>
+                                <form action="AdminItemViewController" method="post">
 
 
                                     <div class="form-group row">
@@ -201,7 +204,7 @@
                                         </div>
 
                                     </div>
-                                    
+
                                     <div class="form-group row">
                                         <label class="col-sm-7 col-form-label">Item Price</label>
                                         <div class="col-sm-10">
@@ -231,66 +234,89 @@
         <h5 style="color: #138496">Customer View</h5>
         <br/>
         <!-------------------------- table customer--------------------------------------->
-                <table class="table table-hover" style="background:#D9D3D3;border-radius: 2px;box-shadow: 1px 2px 3px white" >
-                    <thead>
-                        <tr >
-                            <th scope="col">Ticket Number</th>
-                            <th scope="col">Advisor Name</th>
-                            <th scope="col">Influencer</th>
-                            <th scope="col">Issue</th>
-                            <th scope="col">Status</th>
-                            
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">#001</th>
-                            <td>Byan Admas</td>
-                            <td>Monika Kaweka</td>
-                            <td>Automatic time stamp</td>
-                            <td>Pending</td>
+        <div class="animated rubberBand">
+            <table class="table table-hover" style="background:#D9D3D3;border-radius: 2px;box-shadow: 1px 2px 3px white" >
+                <thead>
+                    <tr >
+                        <th scope="col">Name</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Mobile</th>
+                        <th scope="col">Username</th>
 
-                        </tr>
-                    </tbody>
-                </table>
-                <br/>
+                    </tr>
+                </thead>
+                <tbody>
 
-                
-                <!------------------------------------------------------------------------------->
-                <hr/>
-                <br/>
-                <h5 style="color: #138496">Item View</h5>
-                <br/>
-                 <!-------------------------- table --------------------------------------->
-                <table class="table table-hover"  style="background:#D9D3D3;border-radius: 2px;box-shadow: 1px 2px 3px white">
-                    <thead>
-                        <tr >
-                            <th scope="col">Ticket Number</th>
-                            <th scope="col">Advisor Name</th>
-                            <th scope="col">Influencer</th>
-                            <th scope="col">Issue</th>
-                            <th scope="col">Status</th>
-                            
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">#001</th>
-                            <td>Byan Admas</td>
-                            <td>Monika Kaweka</td>
-                            <td>Automatic time stamp</td>
-                            <td>Pending</td>
+                    <%
+                        if (null == request.getAttribute("customerViewList")) {
+                            request.setAttribute("showCustomers", "showCustomers");
+                            request.getRequestDispatcher("AdminCustomerViewController").forward(request, response);
+                        } else {
+                            List<CustomerDto> cusList = (List<CustomerDto>) request.getAttribute("customerViewList");
+                            for (CustomerDto dto : cusList) {
+                                out.print("<tr>");
+                                out.print("<td>" + dto.getCname() + "</td>");
+                                out.print("<td>" + dto.getCaddress() + "</td>");
+                                out.print("<td>" + dto.getCmobile() + "</td>");
+                                out.print("<td>" + dto.getCusername() + "</td>");
+                                out.print("</tr>");
+                            }
+                        }
+                    %>
 
-                        </tr>
-                    </tbody>
-                </table>
-                <br/>
 
-                
-                <!------------------------------------------------------------------------------->
-                
-                
-                
+                </tbody>
+            </table>
+        </div>
+        <br/>
+
+
+        <!------------------------------------------------------------------------------->
+        <hr/>
+        <br/>
+        <h5 style="color: #138496">Item View</h5>
+        <br/>
+        <!-------------------------- table --------------------------------------->
+        <div class="animated rubberBand">
+            <table class="table table-hover"  style="background:#D9D3D3;border-radius: 2px;box-shadow: 1px 2px 3px white">
+                <thead>
+                    <tr >
+                        <th scope="col">Category</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Qty</th>
+                        <th scope="col">Unit Price</th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <%
+                        if (null == request.getAttribute("ItemViewList")) {
+                            request.setAttribute("showItems", "showItems");
+                            request.getRequestDispatcher("AdminItemViewController").forward(request, response);
+                        } else {
+                            List<ItemDto> itemList = (List<ItemDto>) request.getAttribute("ItemViewList");
+                            for (ItemDto dto : itemList) {
+                                out.print("<tr>");
+                                out.print("<td>" + dto.getIcname() + "</td>");
+                                out.print("<td>" + dto.getIname() + "</td>");
+                                out.print("<td>" + dto.getIqty() + "</td>");
+                                out.print("<td>" + dto.getIprice() + "</td>");
+                                out.print("</tr>");
+                            }
+                        }
+                    %>
+                </tbody>
+            </table>
+        </div>
+
+        <br/>
+
+
+        <!------------------------------------------------------------------------------->
+
+
+
     </div>  
 </body>
 </html>

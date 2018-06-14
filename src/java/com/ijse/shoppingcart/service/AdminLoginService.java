@@ -16,4 +16,6 @@ public interface AdminLoginService extends SuperService{
     public boolean login(AdminLoginDto dto) throws ClassNotFoundException, Exception;
 
     public boolean logout(AdminLoginDto dto) throws ClassNotFoundException, Exception;
+    
+    public String checkLoginPassword(String email) throws ClassNotFoundException, Exception;
 }

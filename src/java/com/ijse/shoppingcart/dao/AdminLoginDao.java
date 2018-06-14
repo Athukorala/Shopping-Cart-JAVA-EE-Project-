@@ -17,5 +17,7 @@ public interface AdminLoginDao extends SuperDao {
     public int login(AdminLoginModel model) throws ClassNotFoundException, Exception;
 
     public int logout(AdminLoginModel model) throws ClassNotFoundException, Exception;
+    
+    public String checkLoginPassword(String email) throws ClassNotFoundException, Exception;
 
 }

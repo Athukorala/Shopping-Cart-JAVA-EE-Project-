@@ -23,6 +23,11 @@ public class AdminLoginDto {
         this.aemail = aemail;
         this.apassword = apassword;
     }
+    
+     public AdminLoginDto(String apassword) {
+        
+        this.apassword = apassword;
+    }
 
     public String getAid() {
         return aid;

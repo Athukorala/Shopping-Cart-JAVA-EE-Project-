@@ -39,7 +39,7 @@
                         </div>
 
                         <div class="card-body">
-                            <form action="AdminLoginController">
+                            <form action="AdminLoginController" method="post">
                                 <div class="form-group row">
                                     <label for="staticEmail" class="col-sm-3 col-form-label">Email</label>
                                     <div class="col-sm-10">
@@ -53,7 +53,7 @@
                                     </div>
                                 </div>
                                 <center>
-                                    <a href="crudOperations.jsp"> <button type="button" class="btn btn-info" style='border-radius:18px'>Admin Login</button></a>
+                                    <button type="submit" class="btn btn-info" style='border-radius:18px'>Admin Login</button>
                                 </center>
                             </form>
                         </div>
@@ -74,21 +74,21 @@
                             <center>Customer Sign In</center>
                         </div>                       
                         <div class="card-body">
-                            <form>
+                            <form action="CustomerLoginController"  method="post">
                                 <div class="form-group row">
                                     <label for="staticEmail" class="col-sm-3 col-form-label">Email</label>
                                     <div class="col-sm-10">
-                                        <input type="text" placeholder='Enter Email'  class="form-control" style='border-radius:18px'>
+                                        <input type="text" name='cusEmail' placeholder='Enter Email'  class="form-control" style='border-radius:18px'>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="inputPassword" class="col-sm-3 col-form-label">Password</label>
                                     <div class="col-sm-10">
-                                        <input type="password" class="form-control" placeholder="Password" style='border-radius:18px'>
+                                        <input type="password" name='cusPassword' class="form-control" placeholder="Password" style='border-radius:18px'>
                                     </div>
                                 </div>
                                 <center>
-                                    <button type="button" class="btn btn-info" style='border-radius:18px'>Customer Login</button>
+                                    <button type="submit" class="btn btn-info" style='border-radius:18px'>Customer Login</button>
                                 </center>
                             </form>
                         </div>
