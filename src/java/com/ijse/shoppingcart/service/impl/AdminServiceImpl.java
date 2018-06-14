@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ijse.shoppingcart.dao;
+package com.ijse.shoppingcart.service.impl;
+
+import com.ijse.shoppingcart.service.AdminService;
 
 /**
  *
  * @author TD Athukorala
  */
-public interface Admin_Login {
+public class AdminServiceImpl implements AdminService {
     
 }

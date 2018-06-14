@@ -9,6 +9,6 @@ package com.ijse.shoppingcart.dao;
  *
  * @author TD Athukorala
  */
-public interface Item_Category {
+public interface AdminDao extends SuperDao{
     
 }

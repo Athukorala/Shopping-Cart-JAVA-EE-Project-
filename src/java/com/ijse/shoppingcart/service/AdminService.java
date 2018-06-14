@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ijse.shoppingcart.dao;
+package com.ijse.shoppingcart.service;
 
 /**
  *
  * @author TD Athukorala
  */
-public interface Item {
+public interface AdminService extends SuperService{
     
 }

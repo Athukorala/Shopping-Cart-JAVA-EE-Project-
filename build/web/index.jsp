@@ -29,8 +29,9 @@
 
         <div class="row">
 
-            <div class="col-sm-5">
-                <div class="animated zoomIn">
+            <div class="col-sm-5">                
+
+                <div class="animated wobble">
                     <div class="card" style='border-radius: 15px' >
 
                         <div class="card-header">
@@ -38,21 +39,21 @@
                         </div>
 
                         <div class="card-body">
-                            <form>
+                            <form action="AdminLoginController">
                                 <div class="form-group row">
                                     <label for="staticEmail" class="col-sm-3 col-form-label">Email</label>
                                     <div class="col-sm-10">
-                                        <input type="text" placeholder='Enter Email' class="form-control" style='border-radius: 18px'>
+                                        <input type="text" name="adminEmail" placeholder='Enter Email' class="form-control" style='border-radius: 18px'>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="inputPassword" class="col-sm-3 col-form-label">Password</label>
                                     <div class="col-sm-10">
-                                        <input type="password" class="form-control"  placeholder="Password" style='border-radius:18px'>
+                                        <input type="password" name="adminPassword" class="form-control"  placeholder="Password" style='border-radius:18px'>
                                     </div>
                                 </div>
                                 <center>
-                                    <button type="button" class="btn btn-info" style='border-radius:18px'>Admin Login</button>
+                                    <a href="crudOperations.jsp"> <button type="button" class="btn btn-info" style='border-radius:18px'>Admin Login</button></a>
                                 </center>
                             </form>
                         </div>

@@ -6,6 +6,11 @@
 package com.ijse.shoppingcart.service.serviceFactory;
 
 import com.ijse.shoppingcart.service.SuperService;
+import com.ijse.shoppingcart.service.impl.AdminLoginServiceImpl;
+import com.ijse.shoppingcart.service.impl.AdminServiceImpl;
+import com.ijse.shoppingcart.service.impl.CustomerServiceImpl;
+import com.ijse.shoppingcart.service.impl.ItemCategoryServiceImpl;
+import com.ijse.shoppingcart.service.impl.ItemServiceImpl;
 
 /**
  *
@@ -17,7 +22,7 @@ public class ServiceFactory {
         
     }
     public enum ServiceType{
-       //-
+       ADMIN, ADMIN_LOGIN, CUSTOMER, ITEM, ITEM_CATEGORY
     }
     
     public static ServiceFactory getInstance(){
@@ -29,7 +34,18 @@ public class ServiceFactory {
     
     public SuperService getServiceFactory(ServiceType type){
         switch(type){
-//            case BOOK:return new BookService();
+            
+            case ADMIN:
+                return new AdminServiceImpl();
+            case ADMIN_LOGIN:
+                return new AdminLoginServiceImpl();
+            case CUSTOMER:
+                return new CustomerServiceImpl();
+            case ITEM:
+                return new ItemServiceImpl();
+            case ITEM_CATEGORY:
+                return new ItemCategoryServiceImpl();
+            
             default: return null;
         }
     } 

@@ -12,9 +12,13 @@ import java.util.List;
  *
  * @author TD Athukorala
  */
-public interface Customer {
+public interface CustomerDao extends SuperDao {
+
     public int add(CustomerModel model) throws ClassNotFoundException, Exception;
-    public List<CustomerModel> readAll();
-    public int delete(CustomerModel model);
-    public int update(CustomerModel model);
+
+    public List<CustomerModel> readAll() throws ClassNotFoundException, Exception;
+
+    public int delete(CustomerModel model) throws ClassNotFoundException, Exception;
+
+    public int update(CustomerModel model) throws ClassNotFoundException, Exception;
 }

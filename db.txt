@@ -3,59 +3,60 @@ create database shopping_cart;
 use shopping_cart;
 
 create table customer(
-	cid varchar(10) NOT NULL,
+	cid int(10) NOT NULL AUTO_INCREMENT,
 	cname varchar(40) NOT NULL,
 	caddress varchar(50) NOT NULL,
 	cmobile varchar(20) NOT NULL,
-	cusername varchar(50) NOT NULL,
+	cusername varchar(50) NOT NULL UNIQUE,
 	cpassword VARBINARY(255) NOT NULL,
 	CONSTRAINT PRIMARY KEY (cid)
 );
 
 create table item_category(
-	icid varchar(10) NOT NULL,
-	icname varchar(40) NOT NULL,
+	icid int(10) NOT NULL AUTO_INCREMENT,
+	icname varchar(40) NOT NULL UNIQUE,
 	CONSTRAINT PRIMARY KEY (icid)
 );
 
 
 create table item(
-	iid varchar(10) NOT NULL,
-	icid varchar(10) NOT NULL,
-	iname varchar(40) NOT NULL,
+	iid int(10) NOT NULL AUTO_INCREMENT,
+	icid int(10) NOT NULL,
+	iname varchar(40) NOT NULL UNIQUE,
 	iqty int(10) NOT NULL,
+	iprice double NOT NULL,
 	CONSTRAINT PRIMARY KEY (iid),
 	CONSTRAINT FOREIGN KEY (icid) REFERENCES item_category(icid) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 create table admin_login(
-	aid varchar(10) NOT NULL,
-	aemail varchar(50) NOT NULL,
+	aid int(10) NOT NULL AUTO_INCREMENT,
+	aemail varchar(50) NOT NULL UNIQUE,
 	apassword VARBINARY(255) NOT NULL,
 	CONSTRAINT PRIMARY KEY (aid)
 );
 
-INSERT INTO admin_login VALUES('A001','admin',aes_encrypt('admin','admin'));
+INSERT INTO admin_login VALUES(1,'admin',aes_encrypt('admin','admin'));
 
-INSERT INTO customer VALUES('C001','tharindu','kaluthara','0778533935','tharindu',aes_encrypt('ijse','tharindu'));
-INSERT INTO customer VALUES('C002','sandun','aluthgama','0774954012','sandun',aes_encrypt('ijse','sandun'));
-INSERT INTO customer VALUES('C003','vidura','kaluthara-north','0766234152','vidura',aes_encrypt('ijse','vidura'));
+INSERT INTO customer VALUES(1,'tharindu','kaluthara','0778533935','tharindu',aes_encrypt('ijse','tharindu'));
+INSERT INTO customer VALUES(2,'sandun','aluthgama','0774954012','sandun',aes_encrypt('ijse','sandun'));
+INSERT INTO customer VALUES(3,'vidura','kaluthara-north','0766234152','vidura',aes_encrypt('ijse','vidura'));
 
-INSERT INTO item_category VALUES('IC001','LAPTOP');
-INSERT INTO item_category VALUES('IC002','FRUIT');
-INSERT INTO item_category VALUES('IC003','MOBILE PHONE');
+INSERT INTO item_category VALUES(1,'LAPTOP');
+INSERT INTO item_category VALUES(2,'FRUIT');
+INSERT INTO item_category VALUES(3,'MOBILE PHONE');
 
-INSERT INTO item VALUES('I001','IC001','DELL','23');
-INSERT INTO item VALUES('I002','IC001','HP','17');
-INSERT INTO item VALUES('I003','IC001','THINKPAD','32');
-INSERT INTO item VALUES('I004','IC003','NOKIA','4');
-INSERT INTO item VALUES('I005','IC003','SAMSUNG','7');
-INSERT INTO item VALUES('I006','IC002','APPLE','14');
-INSERT INTO item VALUES('I007','IC002','MANGO','21');
+INSERT INTO item VALUES(1,1,'DELL','23',37000);
+INSERT INTO item VALUES(2,1,'HP','17',430000);
+INSERT INTO item VALUES(3,1,'THINKPAD','32',65000);
+INSERT INTO item VALUES(4,3,'NOKIA','4',13450);
+INSERT INTO item VALUES(5,3,'SAMSUNG','7',21700);
+INSERT INTO item VALUES(6,2,'APPLE','14',50);
+INSERT INTO item VALUES(7,2,'MANGO','21',45);
 
-mysql> select c.cname,aes_decrypt(c.cpassword,c.cname)  from customer c where c.cid="C002";
-+--------+----------------------------------+
-| cname  | aes_decrypt(c.cpassword,c.cname) |
-+--------+----------------------------------+
-| sandun | ijse                             |
-+--------+----------------------------------+
+mysql> select c.cname,aes_decrypt(c.cpassword,c.cname)  from customer c where c.cid=1;
++----------+----------------------------------+
+| cname    | aes_decrypt(c.cpassword,c.cname) |
++----------+----------------------------------+
+| tharindu | ijse                             |
++----------+----------------------------------+
