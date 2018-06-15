@@ -41,6 +41,12 @@ public class ItemModel {
     
     }
 
+    public ItemModel(String iname, int iqty, double iprice) {
+        this.iname = iname;
+        this.iqty = iqty;
+        this.iprice = iprice;
+    }
+
     public String getIcname() {
         return icname;
     }

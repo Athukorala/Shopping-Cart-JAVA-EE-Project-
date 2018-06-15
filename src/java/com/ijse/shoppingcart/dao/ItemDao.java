@@ -20,4 +20,6 @@ public interface ItemDao extends SuperDao {
     public int delete(ItemModel model) throws ClassNotFoundException, Exception;
 
     public int update(ItemModel model) throws ClassNotFoundException, Exception;
+    
+    public List<ItemModel> searchItemInCategory(String value) throws ClassNotFoundException, Exception; 
 }

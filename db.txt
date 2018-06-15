@@ -74,3 +74,5 @@ mysql> select iname,icname from item i, item_category ic where i.icid=ic.icid &&
 | HP       | LAPTOP |
 | THINKPAD | LAPTOP |
 +----------+--------+
+
+select iname,iqty,iprice from item i,item_category ic where i.icid=ic.icid && ic.icname="FRUIT";

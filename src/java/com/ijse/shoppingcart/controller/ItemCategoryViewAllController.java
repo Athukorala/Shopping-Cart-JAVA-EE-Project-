@@ -5,8 +5,7 @@
  */
 package com.ijse.shoppingcart.controller;
 
-
-import com.ijse.shoppingcart.service.ItemService;
+import com.ijse.shoppingcart.service.ItemCategoryService;
 import com.ijse.shoppingcart.service.serviceFactory.ServiceFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.annotation.WebInitParam;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,8 +23,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author TD Athukorala
  */
-@WebServlet(name = "AdminItemViewController", urlPatterns = {"/AdminItemViewController"})
-public class AdminItemViewController extends HttpServlet {
+@WebServlet(name = "ItemCategoryViewAllController", urlPatterns = {"/ItemCategoryViewAllController"}, initParams = {
+    @WebInitParam(name = "Name", value = "Value")})
+public class ItemCategoryViewAllController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,12 +40,13 @@ public class AdminItemViewController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            ItemService ser=(ItemService) ServiceFactory.getInstance().getServiceFactory(ServiceFactory.ServiceType.ITEM);
-            List itemArray = ser.readAll();
-            request.setAttribute("ItemViewList", itemArray);
-            request.getRequestDispatcher("crudOperations.jsp").forward(request, response);
+            System.out.println("okkkk");
+            ItemCategoryService ser = (ItemCategoryService) ServiceFactory.getInstance().getServiceFactory(ServiceFactory.ServiceType.ITEM_CATEGORY);
+            List itemCategoryArray = ser.readAll();
+            request.setAttribute("ItemCategoryArrayViewList", itemCategoryArray);
+            request.getRequestDispatcher("buyItems.jsp").forward(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(AdminItemViewController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ItemCategoryViewAllController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

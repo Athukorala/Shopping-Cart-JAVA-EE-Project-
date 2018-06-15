@@ -20,4 +20,6 @@ public interface ItemService extends SuperService {
     public int delete(ItemDto dto) throws ClassNotFoundException, Exception;
 
     public int update(ItemDto dto) throws ClassNotFoundException, Exception;
+    
+    public List<ItemDto> searchItemInCategory(String value) throws ClassNotFoundException, Exception; 
 }

@@ -43,6 +43,7 @@ public class AdminCustomerViewController extends HttpServlet {
              request.setAttribute("customerViewList", cusArray);
             request.getRequestDispatcher("crudOperations.jsp").forward(request, response);
             System.out.println("list of array: "+cusArray);
+            response.sendRedirect("");
             
         } catch (Exception ex) {
             Logger.getLogger(AdminCustomerViewController.class.getName()).log(Level.SEVERE, null, ex);

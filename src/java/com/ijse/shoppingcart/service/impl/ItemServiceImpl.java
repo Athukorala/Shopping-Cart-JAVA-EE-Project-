@@ -50,5 +50,24 @@ public class ItemServiceImpl  implements ItemService{
     public int update(ItemDto dto) throws ClassNotFoundException, Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public List<ItemDto> searchItemInCategory(String value) throws ClassNotFoundException, Exception {
+        ItemDao dao = (ItemDao) DaoFactory.getInstance().getDAOFactory(DaoFactory.DAOType.ITEM);
+        List<ItemDto> itemArray=new ArrayList<>();
+        ItemDto dto=new ItemDto();
+        
+        List<ItemModel> model= dao.searchItemInCategory(value);
+        for (ItemModel mod : model) {
+            dto=new ItemDto(mod.getIname(),mod.getIqty(), mod.getIprice());
+            System.out.println("------------------------------------");
+            System.out.println(mod.getIname());
+            System.out.println("------------------------------------");
+            itemArray.add(dto);
+        }
+
+        return itemArray;
+    
+    }
     
 }

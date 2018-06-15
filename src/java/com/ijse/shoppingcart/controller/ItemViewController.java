@@ -5,7 +5,6 @@
  */
 package com.ijse.shoppingcart.controller;
 
-
 import com.ijse.shoppingcart.service.ItemService;
 import com.ijse.shoppingcart.service.serviceFactory.ServiceFactory;
 import java.io.IOException;
@@ -23,8 +22,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author TD Athukorala
  */
-@WebServlet(name = "AdminItemViewController", urlPatterns = {"/AdminItemViewController"})
-public class AdminItemViewController extends HttpServlet {
+@WebServlet(name = "ItemViewController", urlPatterns = {"/ItemViewController"})
+public class ItemViewController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,13 +38,19 @@ public class AdminItemViewController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            ItemService ser=(ItemService) ServiceFactory.getInstance().getServiceFactory(ServiceFactory.ServiceType.ITEM);
-            List itemArray = ser.readAll();
-            request.setAttribute("ItemViewList", itemArray);
-            request.getRequestDispatcher("crudOperations.jsp").forward(request, response);
+            /* TODO output your page here. You may use following sample code. */
+            String value = request.getParameter("itemName");
+            
+            ItemService ser = (ItemService) ServiceFactory.getInstance().getServiceFactory(ServiceFactory.ServiceType.ITEM);
+            List itemArray = ser.searchItemInCategory(value);
+            request.setAttribute("ItemArrayViewList", itemArray);
+            request.setAttribute("categoryName", value);
+            request.getRequestDispatcher("buyItems.jsp").forward(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(AdminItemViewController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ItemCategoryViewAllController.class.getName()).log(Level.SEVERE, null, ex);
         }
+            
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -21,7 +21,7 @@ import java.util.logging.Logger;
  *
  * @author TD Athukorala
  */
-public class ItemDaoImpl implements ItemDao{
+public class ItemDaoImpl implements ItemDao {
 
     @Override
     public int add(ItemModel model) throws ClassNotFoundException, Exception {
@@ -31,7 +31,7 @@ public class ItemDaoImpl implements ItemDao{
     @Override
     public List<ItemModel> readAll() throws ClassNotFoundException, Exception {
         ResourceConnection resourceConnection = new ResourceConnectionFactory().getResourceConnection();
-        List<ItemModel> listArray=new ArrayList<>();
+        List<ItemModel> listArray = new ArrayList<>();
 
         try {
             Statement stm = resourceConnection.getConnection().createStatement();
@@ -39,8 +39,8 @@ public class ItemDaoImpl implements ItemDao{
             System.out.println(rs);
             ItemModel md = new ItemModel();
             while (rs.next()) {
-                md=new ItemModel(rs.getString("iid"),rs.getString("icid"),rs.getString("iname"),rs.getInt("iqty"),rs.getDouble("iprice"),rs.getString("icname"));
-              
+                md = new ItemModel(rs.getString("iid"), rs.getString("icid"), rs.getString("iname"), rs.getInt("iqty"), rs.getDouble("iprice"), rs.getString("icname"));
+
                 listArray.add(md);
             }
             return listArray;
@@ -52,9 +52,8 @@ public class ItemDaoImpl implements ItemDao{
             Logger.getLogger(AdminLoginDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
             throw ex;
         }
-    
-    
-    //select * from item i, item_category ic where i.icid=ic.icid;
+
+        //select * from item i, item_category ic where i.icid=ic.icid;
     }
 
     @Override
@@ -66,5 +65,32 @@ public class ItemDaoImpl implements ItemDao{
     public int update(ItemModel model) throws ClassNotFoundException, Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+    @Override
+    public List<ItemModel> searchItemInCategory(String value) throws ClassNotFoundException, Exception {
+        ResourceConnection resourceConnection = new ResourceConnectionFactory().getResourceConnection();
+        List<ItemModel> listArray = new ArrayList<>();
+
+        try {
+            Statement stm = resourceConnection.getConnection().createStatement();
+            ResultSet rs = stm.executeQuery("select iname,iqty,iprice from item i,item_category ic where i.icid=ic.icid && ic.icname='" + value + "'");
+            System.out.println(rs);
+            ItemModel md = new ItemModel();
+            while (rs.next()) {
+                md = new ItemModel(rs.getString("iname"), rs.getInt("iqty"), rs.getDouble("iprice"));
+
+                listArray.add(md);
+            }
+            return listArray;
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminLoginDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+            throw ex;
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminLoginDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+            throw ex;
+        }
+
+    }
+
 }
