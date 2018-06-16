@@ -12,6 +12,7 @@
             <file>file:/C:/Users/TD%20Athukorala/Documents/NetBeansProjects/ShoppingCart_PROJECT/src/java/com/ijse/shoppingcart/controller/CustomerLoginController.java</file>
             <file>file:/C:/Users/TD%20Athukorala/Documents/NetBeansProjects/ShoppingCart_PROJECT/src/java/com/ijse/shoppingcart/resourceConnectionFactory/ResourceConnectionFactory.java</file>
             <file>file:/C:/Users/TD%20Athukorala/Documents/NetBeansProjects/ShoppingCart_PROJECT/src/java/com/ijse/shoppingcart/service/impl/ItemCategoryServiceImpl.java</file>
+            <file>file:/C:/Users/TD%20Athukorala/Documents/NetBeansProjects/ShoppingCart_PROJECT/src/java/com/ijse/shoppingcart/model/ItemCategoryModel.java</file>
             <file>file:/C:/Users/TD%20Athukorala/Documents/NetBeansProjects/ShoppingCart_PROJECT/src/java/com/ijse/shoppingcart/connection/DatabaseResourceConnection.java</file>
             <file>file:/C:/Users/TD%20Athukorala/Documents/NetBeansProjects/ShoppingCart_PROJECT/src/java/com/ijse/shoppingcart/dao/impl/ItemCategoryDaoImpl.java</file>
             <file>file:/C:/Users/TD%20Athukorala/Documents/NetBeansProjects/ShoppingCart_PROJECT/src/java/com/ijse/shoppingcart/dao/impl/AdminDaoImpl.java</file>
@@ -27,8 +28,9 @@
             <file>file:/C:/Users/TD%20Athukorala/Documents/NetBeansProjects/ShoppingCart_PROJECT/src/java/com/ijse/shoppingcart/dao/CustomerDao.java</file>
             <file>file:/C:/Users/TD%20Athukorala/Documents/NetBeansProjects/ShoppingCart_PROJECT/src/java/com/ijse/shoppingcart/service/ItemCategoryService.java</file>
             <file>file:/C:/Users/TD%20Athukorala/Documents/NetBeansProjects/ShoppingCart_PROJECT/src/java/com/ijse/shoppingcart/dao/daoFactory/DaoFactory.java</file>
-            <file>file:/C:/Users/TD%20Athukorala/Documents/NetBeansProjects/ShoppingCart_PROJECT/web/fruits.jpg</file>
             <file>file:/C:/Users/TD%20Athukorala/Documents/NetBeansProjects/ShoppingCart_PROJECT/src/java/com/ijse/shoppingcart/service/impl/AdminServiceImpl.java</file>
+            <file>file:/C:/Users/TD%20Athukorala/Documents/NetBeansProjects/ShoppingCart_PROJECT/src/java/com/ijse/shoppingcart/controller/ItemViewController.java</file>
+            <file>file:/C:/Users/TD%20Athukorala/Documents/NetBeansProjects/ShoppingCart_PROJECT/src/java/com/ijse/shoppingcart/controller/ItemCategoryViewAllController.java</file>
             <file>file:/C:/Users/TD%20Athukorala/Documents/NetBeansProjects/ShoppingCart_PROJECT/src/java/com/ijse/shoppingcart/service/CustomerService.java</file>
             <file>file:/C:/Users/TD%20Athukorala/Documents/NetBeansProjects/ShoppingCart_PROJECT/src/java/com/ijse/shoppingcart/model/ItemModel.java</file>
             <file>file:/C:/Users/TD%20Athukorala/Documents/NetBeansProjects/ShoppingCart_PROJECT/src/java/com/ijse/shoppingcart/controller/AdminItemViewController.java</file>
