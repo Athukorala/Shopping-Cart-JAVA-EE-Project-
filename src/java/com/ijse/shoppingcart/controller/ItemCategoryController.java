@@ -5,6 +5,8 @@
  */
 package com.ijse.shoppingcart.controller;
 
+import com.ijse.shoppingcart.dto.ItemCategoryDto;
+import com.ijse.shoppingcart.service.ItemCategoryService;
 import com.ijse.shoppingcart.service.ItemService;
 import com.ijse.shoppingcart.service.serviceFactory.ServiceFactory;
 import java.io.IOException;
@@ -22,8 +24,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author TD Athukorala
  */
-@WebServlet(name = "ItemViewController", urlPatterns = {"/ItemViewController"})
-public class ItemViewController extends HttpServlet {
+@WebServlet(name = "ItemCategoryController", urlPatterns = {"/ItemCategoryController"})
+public class ItemCategoryController extends HttpServlet {
+
+    private String name = null;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,19 +42,55 @@ public class ItemViewController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            String value = request.getParameter("itemName");
-            
-            ItemService ser = (ItemService) ServiceFactory.getInstance().getServiceFactory(ServiceFactory.ServiceType.ITEM);
-            List itemArray = ser.searchItemInCategory(value);
-            request.setAttribute("ItemArrayViewList", itemArray);
-            request.setAttribute("categoryName", value);
-            request.getRequestDispatcher("buyItems.jsp").forward(request, response);
+            ItemCategoryService ser = (ItemCategoryService) ServiceFactory.getInstance().getServiceFactory(ServiceFactory.ServiceType.ITEM_CATEGORY);
+
+            if (name==request.getParameter("icname")) {
+
+            } else {
+                name = request.getParameter("icname");
+
+                ItemCategoryDto dto = new ItemCategoryDto(0, request.getParameter("icname"));
+
+                ItemCategoryService service = (ItemCategoryService) ServiceFactory.getInstance().getServiceFactory(ServiceFactory.ServiceType.ITEM_CATEGORY);
+                boolean isAdded = service.add(dto);
+
+                if (isAdded) {
+                    request.setAttribute("itemSave", "yes");
+                    request.getRequestDispatcher("crudOperations.jsp").forward(request, response);
+                } else {
+                    request.setAttribute("itemSave", "no");
+                    request.getRequestDispatcher("crudOperations.jsp").forward(request, response);
+                }
+
+            }
+
+            switch (request.getAttribute("itemController").toString()) {
+                case "showAllItemForAdmin":
+                    ser = (ItemCategoryService) ServiceFactory.getInstance().getServiceFactory(ServiceFactory.ServiceType.ITEM_CATEGORY);
+                    List itemCategoryArray = ser.readAll();
+                    request.setAttribute("ItemCategoryArrayViewList", itemCategoryArray);
+                    request.getRequestDispatcher("crudOperations.jsp").forward(request, response);
+                    break;
+
+                case "showAllItemForCustomer":
+                    ser = (ItemCategoryService) ServiceFactory.getInstance().getServiceFactory(ServiceFactory.ServiceType.ITEM_CATEGORY);
+                    List itemCategoryCustomerArray = ser.readAll();
+                    request.setAttribute("ItemCategoryArrayViewList", itemCategoryCustomerArray);
+                    request.getRequestDispatcher("buyItems.jsp").forward(request, response);
+                    break;
+
+                case "itemAddForAdmin":
+
+                    break;
+                default:
+                    out.print("0");
+                    break;
+
+            }
         } catch (Exception ex) {
-            Logger.getLogger(ItemViewController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ItemCategoryController.class.getName()).log(Level.SEVERE, null, ex);
         }
-            
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

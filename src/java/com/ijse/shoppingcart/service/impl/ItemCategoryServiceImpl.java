@@ -20,8 +20,16 @@ import java.util.List;
 public class ItemCategoryServiceImpl implements ItemCategoryService {
 
     @Override
-    public int add(ItemCategoryDto dto) throws ClassNotFoundException, Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean add(ItemCategoryDto dto) throws ClassNotFoundException, Exception {
+       ItemCategoryDao dao=(ItemCategoryDao) DaoFactory.getInstance().getDAOFactory(DaoFactory.DAOType.ITEM_CATEGORY);
+        ItemCategoryModel model=new ItemCategoryModel(0, dto.getIcname());
+        boolean res = false;
+
+        res = (0 < dao.add(model));
+
+        return res;
+        
+    
     }
 
     @Override
@@ -38,12 +46,12 @@ public class ItemCategoryServiceImpl implements ItemCategoryService {
     }
 
     @Override
-    public int delete(ItemCategoryDto dto) throws ClassNotFoundException, Exception {
+    public boolean delete(ItemCategoryDto dto) throws ClassNotFoundException, Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public int update(ItemCategoryDto dto) throws ClassNotFoundException, Exception {
+    public boolean update(ItemCategoryDto dto) throws ClassNotFoundException, Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

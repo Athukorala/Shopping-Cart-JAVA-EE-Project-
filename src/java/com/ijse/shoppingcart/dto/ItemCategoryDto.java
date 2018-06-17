@@ -11,22 +11,22 @@ package com.ijse.shoppingcart.dto;
  */
 public class ItemCategoryDto {
 
-    private String icid;
+    private int icid;
     private String icname;
 
     public ItemCategoryDto() {
     }
 
-    public ItemCategoryDto(String icid, String icname) {
+    public ItemCategoryDto(int icid, String icname) {
         this.icid = icid;
         this.icname = icname;
     }
 
-    public String getIcid() {
+    public int getIcid() {
         return icid;
     }
 
-    public void setIcid(String icid) {
+    public void setIcid(int icid) {
         this.icid = icid;
     }
 

@@ -11,22 +11,22 @@ package com.ijse.shoppingcart.model;
  */
 public class ItemCategoryModel {
 
-    private String icid;
+    private int icid;
     private String icname;
 
     public ItemCategoryModel() {
     }
 
-    public ItemCategoryModel(String icid, String icname) {
+    public ItemCategoryModel(int icid, String icname) {
         this.icid = icid;
         this.icname = icname;
     }
 
-    public String getIcid() {
+    public int getIcid() {
         return icid;
     }
 
-    public void setIcid(String icid) {
+    public void setIcid(int icid) {
         this.icid = icid;
     }
 

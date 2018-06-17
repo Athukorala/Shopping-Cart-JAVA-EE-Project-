@@ -11,7 +11,7 @@ package com.ijse.shoppingcart.dto;
  */
 public class CustomerDto {
 
-    private String cid;
+    private int cid;
     private String cname;
     private String caddress;
     private String cmobile;
@@ -21,7 +21,7 @@ public class CustomerDto {
     public CustomerDto() {
     }
 
-    public CustomerDto(String cid, String cname, String caddress, String cmobile, String cusername, String cpassword) {
+    public CustomerDto(int cid, String cname, String caddress, String cmobile, String cusername, String cpassword) {
         this.cid = cid;
         this.cname = cname;
         this.caddress = caddress;
@@ -30,7 +30,7 @@ public class CustomerDto {
         this.cpassword = cpassword;
     }
 
-    public CustomerDto(String cid, String cname, String caddress, String cmobile, String cusername) {
+    public CustomerDto(int cid, String cname, String caddress, String cmobile, String cusername) {
         this.cid = cid;
         this.cname = cname;
         this.caddress = caddress;
@@ -39,11 +39,11 @@ public class CustomerDto {
         
     }
     
-    public String getCid() {
+    public int getCid() {
         return cid;
     }
 
-    public void setCid(String cid) {
+    public void setCid(int cid) {
         this.cid = cid;
     }
 

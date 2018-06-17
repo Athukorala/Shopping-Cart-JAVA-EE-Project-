@@ -18,7 +18,7 @@
 
         <title>Shopping Cart</title>
     </head>
-    <body style="background-color: #d2cbcb;background-image: url(home_back.png);height: 100px">
+    <body style="background-color: #d2cbcb;background-image: url(./images/home_back.png);height: 100px">
 
 
         <div class="row">
@@ -26,12 +26,12 @@
             <div class="col-sm-3">
                 <div class="animated fadeInDownBig">
                     <div class="w3-content w3-section">
-                        <img class="mySlides" src="phones1.jpg" style="width:100%">
-                        <img class="mySlides" src="computer.jpg" style="width:100%">
-                        <img class="mySlides" src="veg.jpg" style="width:100%">
-                        <img class="mySlides12" src="3.jpg" style="width:100%">
-                        <img class="mySlides12" src="2.jpg" style="width:100%">
-                        <img class="mySlides12" src="1.jpg" style="width:100%">
+                        <img class="mySlides" src="./images/phones1.jpg" style="width:100%">
+                        <img class="mySlides" src="./images/computer.jpg" style="width:100%">
+                        <img class="mySlides" src="./images/veg.jpg" style="width:100%">
+                        <img class="mySlides12" src="./images/3.jpg" style="width:100%">
+                        <img class="mySlides12" src="./images/2.jpg" style="width:100%">
+                        <img class="mySlides12" src="./images/1.jpg" style="width:100%">
                     </div>
                 </div>
 
@@ -43,6 +43,9 @@
                         <h3 style='color:#666666'><span style='color:orange'>S</span>hopping <span style='color:orange'>C</span>art</h3>
                         <small>Smarter Shopping, Better Living!</small>
                     </div>
+                    <a href="index.jsp"><button type="button" class="btn btn-default btn-sm" style="float:right" onclick='logoutBtn()'>
+                            Log out
+                        </button></a>
                     <hr>
                 </center>
 
@@ -55,8 +58,8 @@
 
                                 <%
                                     if (null == request.getAttribute("ItemCategoryArrayViewList")) {
-                                        request.setAttribute("showItemCategory", "showItemCategory");
-                                        request.getRequestDispatcher("ItemCategoryViewAllController").forward(request, response);
+                                        request.setAttribute("itemController", "showAllItemForCustomer");
+                                        request.getRequestDispatcher("ItemCategoryController").forward(request, response);
                                     } else {
                                         List<ItemCategoryDto> itemCategoryList = (List<ItemCategoryDto>) request.getAttribute("ItemCategoryArrayViewList");
                                         for (ItemCategoryDto dto : itemCategoryList) {
@@ -128,12 +131,12 @@
             <div class="col-sm-3">
                 <div class="animated fadeInDownBig">
                     <div class="w3-content w3-section">
-                        <img class="mySlides1" src="6.jpg" style="width:100%">
-                        <img class="mySlides1" src="Computers.jpg" style="width:100%">
-                        <img class="mySlides1" src="images.jpg" style="width:100%">
-                        <img class="mySlides12" src="4.jpg" style="width:100%">
-                        <img class="mySlides12" src="5.jpg" style="width:100%">
-                        <img class="mySlides12" src="fruits.jpg" style="width:100%">
+                        <img class="mySlides1" src="./images/6.jpg" style="width:100%">
+                        <img class="mySlides1" src="./images/Computers.jpg" style="width:100%">
+                        <img class="mySlides1" src="./images/images.jpg" style="width:100%">
+                        <img class="mySlides12" src="./images/5.jpg" style="width:100%">
+                        <img class="mySlides12" src="./images/4.jpg" style="width:100%">
+                        <img class="mySlides12" src="./images/fruits.jpg" style="width:100%">
                     </div>
                 </div>
             </div>

@@ -38,13 +38,13 @@ public class AdminCustomerViewController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            CustomerService ser=(CustomerService) ServiceFactory.getInstance().getServiceFactory(ServiceFactory.ServiceType.CUSTOMER);
-            List cusArray=ser.readAll();
-             request.setAttribute("customerViewList", cusArray);
+            CustomerService ser = (CustomerService) ServiceFactory.getInstance().getServiceFactory(ServiceFactory.ServiceType.CUSTOMER);
+            List cusArray = ser.readAll();
+            request.setAttribute("customerViewList", cusArray);
             request.getRequestDispatcher("crudOperations.jsp").forward(request, response);
-            System.out.println("list of array: "+cusArray);
-            response.sendRedirect("");
-            
+//            System.out.println("list of array: "+cusArray);
+//            response.sendRedirect("");
+
         } catch (Exception ex) {
             Logger.getLogger(AdminCustomerViewController.class.getName()).log(Level.SEVERE, null, ex);
         }

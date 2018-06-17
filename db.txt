@@ -76,3 +76,6 @@ mysql> select iname,icname from item i, item_category ic where i.icid=ic.icid &&
 +----------+--------+
 
 select iname,iqty,iprice from item i,item_category ic where i.icid=ic.icid && ic.icname="FRUIT";
+
+aes_encrypt('"+model.getCpassword()+'","'+model.getCusername()+"')
+,'aes_encrypt('"+model.getCpassword()+'","'+model.getCusername()+"')	

@@ -39,6 +39,7 @@ public class AdminLoginController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            System.out.println("----------Admin Login----------");
             String email = request.getParameter("adminEmail");
             String password = request.getParameter("adminPassword");
 
@@ -53,14 +54,14 @@ public class AdminLoginController extends HttpServlet {
                 System.out.println("Result: " + pass);
                 if (null == pass) {
                     request.getRequestDispatcher("index.jsp").forward(request, response);
-                    out.print("<script>alert('Incorrect username')</script>");
+                    
                 } else if (password.equalsIgnoreCase(pass)) {
                     request.getRequestDispatcher("crudOperations.jsp").forward(request, response);
                     
 //                
                 } else if (!password.equalsIgnoreCase(pass)) {
                     request.getRequestDispatcher("index.jsp").forward(request, response);
-                    out.print("<script>alert('Incorrect password')</script>");
+                    
                     
                 }
             }

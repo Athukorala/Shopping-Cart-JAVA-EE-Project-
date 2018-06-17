@@ -10,6 +10,7 @@ import com.ijse.shoppingcart.dao.ItemCategoryDao;
 import com.ijse.shoppingcart.model.ItemCategoryModel;
 import com.ijse.shoppingcart.model.ItemModel;
 import com.ijse.shoppingcart.resourceConnectionFactory.ResourceConnectionFactory;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -26,7 +27,26 @@ public class ItemCategoryDaoImpl implements ItemCategoryDao {
 
     @Override
     public int add(ItemCategoryModel model) throws ClassNotFoundException, Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ResourceConnection resourceConnection = new ResourceConnectionFactory().getResourceConnection();
+        int res = 0;
+        try {
+            String SQL = "INSERT INTO item_category VALUES(?,?)";
+            PreparedStatement stm = resourceConnection.getConnection().prepareStatement(SQL);
+            stm.setObject(1, model.getIcid());
+            stm.setObject(2, model.getIcname());
+
+            res = stm.executeUpdate();
+
+            return res;
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminLoginDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+            throw ex;
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminLoginDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+            throw ex;
+        }
+
     }
 
     @Override
@@ -40,8 +60,8 @@ public class ItemCategoryDaoImpl implements ItemCategoryDao {
             System.out.println(rs);
             ItemCategoryModel md = new ItemCategoryModel();
             while (rs.next()) {
-                md=new ItemCategoryModel(rs.getString("icid"),rs.getString("icname"));
-              
+                md = new ItemCategoryModel(rs.getInt("icid"), rs.getString("icname"));
+
                 listArray.add(md);
             }
             return listArray;

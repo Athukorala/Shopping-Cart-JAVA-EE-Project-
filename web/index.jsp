@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
         <title>Shopping Cart</title>
     </head>
-    <body style="background-color: #d2cbcb;background-image: url(home_back.png);height: 100px">
+    <body style="background-color: #d2cbcb;background-image: url(./images/home_back.png);height: 100px">
     <center>
         <br/>
         <div class="animated rubberBand">

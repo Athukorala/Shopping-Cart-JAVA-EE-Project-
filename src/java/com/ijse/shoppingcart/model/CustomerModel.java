@@ -11,7 +11,7 @@ package com.ijse.shoppingcart.model;
  */
 public class CustomerModel {
 
-    private String cid;
+    private int cid;
     private String cname;
     private String caddress;
     private String cmobile;
@@ -21,7 +21,7 @@ public class CustomerModel {
     public CustomerModel() {
     }
 
-    public CustomerModel(String cid, String cname, String caddress, String cmobile, String cusername, String cpassword) {
+    public CustomerModel(int cid, String cname, String caddress, String cmobile, String cusername, String cpassword) {
         this.cid = cid;
         this.cname = cname;
         this.caddress = caddress;
@@ -30,7 +30,7 @@ public class CustomerModel {
         this.cpassword = cpassword;
     }
 
-    public CustomerModel(String cid, String cname, String caddress, String cmobile, String cusername) {
+    public CustomerModel(int cid, String cname, String caddress, String cmobile, String cusername) {
         this.cid = cid;
         this.cname = cname;
         this.caddress = caddress;
@@ -39,11 +39,11 @@ public class CustomerModel {
         
     }
 
-    public String getCid() {
+    public int getCid() {
         return cid;
     }
 
-    public void setCid(String cid) {
+    public void setCid(int cid) {
         this.cid = cid;
     }
 

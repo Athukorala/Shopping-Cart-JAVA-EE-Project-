@@ -22,18 +22,26 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public boolean add(CustomerDto dto) throws ClassNotFoundException, Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        CustomerDao dao = (CustomerDao) DaoFactory.getInstance().getDAOFactory(DaoFactory.DAOType.CUSTOMER);
+        CustomerModel model = new CustomerModel(0, dto.getCname(), dto.getCaddress(), dto.getCmobile(), dto.getCusername(), dto.getCpassword());
+
+        boolean res = false;
+
+        res = (0 < dao.add(model));
+
+        return res;
+
     }
 
     @Override
     public List<CustomerDto> readAll() throws ClassNotFoundException, Exception {
         CustomerDao dao = (CustomerDao) DaoFactory.getInstance().getDAOFactory(DaoFactory.DAOType.CUSTOMER);
-        List<CustomerDto> cusArray=new ArrayList<>();
-        CustomerDto dto=new CustomerDto();
-        
-        List<CustomerModel> model= dao.readAll();
+        List<CustomerDto> cusArray = new ArrayList<>();
+        CustomerDto dto = new CustomerDto();
+
+        List<CustomerModel> model = dao.readAll();
         for (CustomerModel mod : model) {
-            dto=new CustomerDto(mod.getCid(), mod.getCname(), mod.getCaddress(), mod.getCmobile(), mod.getCusername());
+            dto = new CustomerDto(mod.getCid(), mod.getCname(), mod.getCaddress(), mod.getCmobile(), mod.getCusername());
             cusArray.add(dto);
         }
 
@@ -52,8 +60,8 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public String checkLoginPassword(String email) throws ClassNotFoundException, Exception {
-        
-        CustomerDao dao=(CustomerDao) DaoFactory.getInstance().getDAOFactory(DaoFactory.DAOType.CUSTOMER);
+
+        CustomerDao dao = (CustomerDao) DaoFactory.getInstance().getDAOFactory(DaoFactory.DAOType.CUSTOMER);
         return dao.checkLoginPassword(email);
     }
 

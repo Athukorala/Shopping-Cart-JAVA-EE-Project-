@@ -5,13 +5,8 @@
  */
 package com.ijse.shoppingcart.controller;
 
-import com.ijse.shoppingcart.service.ItemService;
-import com.ijse.shoppingcart.service.serviceFactory.ServiceFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author TD Athukorala
  */
-@WebServlet(name = "ItemViewController", urlPatterns = {"/ItemViewController"})
-public class ItemViewController extends HttpServlet {
+@WebServlet(name = "ItemController", urlPatterns = {"/ItemController"})
+public class ItemController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,18 +34,16 @@ public class ItemViewController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String value = request.getParameter("itemName");
-            
-            ItemService ser = (ItemService) ServiceFactory.getInstance().getServiceFactory(ServiceFactory.ServiceType.ITEM);
-            List itemArray = ser.searchItemInCategory(value);
-            request.setAttribute("ItemArrayViewList", itemArray);
-            request.setAttribute("categoryName", value);
-            request.getRequestDispatcher("buyItems.jsp").forward(request, response);
-        } catch (Exception ex) {
-            Logger.getLogger(ItemViewController.class.getName()).log(Level.SEVERE, null, ex);
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet ItemController</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet ItemController at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
-            
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

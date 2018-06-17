@@ -13,11 +13,11 @@ import java.util.List;
  * @author TD Athukorala
  */
 public interface ItemCategoryService extends SuperService {
-    public int add(ItemCategoryDto dto) throws ClassNotFoundException, Exception;
+    public boolean add(ItemCategoryDto dto) throws ClassNotFoundException, Exception;
 
     public List<ItemCategoryDto> readAll() throws ClassNotFoundException, Exception;
 
-    public int delete(ItemCategoryDto dto) throws ClassNotFoundException, Exception;
+    public boolean delete(ItemCategoryDto dto) throws ClassNotFoundException, Exception;
 
-    public int update(ItemCategoryDto dto) throws ClassNotFoundException, Exception;
+    public boolean update(ItemCategoryDto dto) throws ClassNotFoundException, Exception;
 }
